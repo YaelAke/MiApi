@@ -17,18 +17,22 @@ namespace MiApi.Services
             _alumnos = database.GetCollection<Alumno>(config.Value.CollectionName);
         }
 
+        // Método para obtener todos los alumnos almacenados en la base de datos.
         public async Task<List<Alumno>> ObtenerAlumnosAsync() =>
             await _alumnos.Find(alumno => true).ToListAsync();
 
+        // Método para insertar un nuevo alumno en la base de datos.
         public async Task<Alumno> InsertarAlumnoAsync(Alumno alumno)
         {
             alumno.Id = ObjectId.GenerateNewId().ToString(); 
             await _alumnos.InsertOneAsync(alumno);
             return alumno;
         }
+
+        // Método para actualizar un alumno existente por su ID.
         public async Task<bool> ActualizarAlumnoAsync(string id, Alumno alumnoActualizado)
         {
-            var filter = Builders<Alumno>.Filter.Eq(a => a.Id, id);
+            var filter = Builders<Alumno>.Filter.Eq(a => a.Id, id); 
             var update = Builders<Alumno>.Update
                 .Set(a => a.Nombre, alumnoActualizado.Nombre)
                 .Set(a => a.PrimerApellido, alumnoActualizado.PrimerApellido)
@@ -37,22 +41,22 @@ namespace MiApi.Services
                 .Set(a => a.Correo, alumnoActualizado.Correo);
 
             var result = await _alumnos.UpdateOneAsync(filter, update);
-            return result.ModifiedCount > 0;
+            return result.ModifiedCount > 0; 
         }
+
+        // Método para eliminar un alumno por su ID.
         public async Task<bool> EliminarAlumnoPorId(string id)
         {
-            var filter = Builders<Alumno>.Filter.Eq(a => a.Id, id);
+            var filter = Builders<Alumno>.Filter.Eq(a => a.Id, id); 
             var result = await _alumnos.DeleteOneAsync(filter);
-            return result.DeletedCount > 0;
+            return result.DeletedCount > 0; 
         }
+
+        // Método para obtener un alumno por su ID.
         public async Task<Alumno> ObtenerAlumnoPorIdAsync(string id)
         {
-            var filter = Builders<Alumno>.Filter.Eq(a => a.Id, id);
-            return await _alumnos.Find(filter).FirstOrDefaultAsync();
+            var filter = Builders<Alumno>.Filter.Eq(a => a.Id, id); 
+            return await _alumnos.Find(filter).FirstOrDefaultAsync(); 
         }
-
-
-
-
     }
 }
