@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MiApi</name>
+    </assembly>
+    <members>
+        <member name="M:MiApi.Controllers.AlumnosController.ObtenerAlumnos">
+            <summary>
+            Obtener todos los alumnos 
+            </summary>
+            <returns>Lista de alumnos</returns>
+            <response code="200">Éxito</response>
+            <response code="500">Error en la verificación</response>
+        </member>
+        <member name="M:MiApi.Controllers.AlumnosController.InsertarAlumno(MiApi.DTO.AlumnoDTO)">
+            <summary>
+            Crear un nuevo alumno 
+            </summary>
+            <param name="alumno">Datos del alumno</param>
+            <returns>Alumno insertado</returns>
+            <response code="201">Alumno creado correctamente</response>
+            <response code="400">Datos inválidos</response>
+            <response code="500">Error en el servidor</response>
+        </member>
+        <member name="M:MiApi.Controllers.AlumnosController.ActualizarAlumno(System.String,MiApi.DTO.AlumnoDTO)">
+            <summary>
+            Actualizar un alumno por su ID
+            </summary>
+            <param name="id">ID del alumno</param>
+            <param name="alumno">Datos actualizados del alumno</param>
+            <returns>Resultado de la operación</returns>
+            <response code="200">Alumno actualizado correctamente</response>
+            <response code="404">Alumno no encontrado</response>
+            <response code="400">Datos inválidos</response>
+            <response code="500">Error en el servidor</response>
+        </member>
+        <member name="M:MiApi.Controllers.AlumnosController.EliminarAlumno(System.String)">
+            <summary>
+            Eliminar un alumno por su ID
+            </summary>
+            <param name="id">ID del alumno</param>
+            <returns>Resultado de la operación</returns>
+            <response code="200">Alumno eliminado correctamente</response>
+            <response code="404">Alumno no encontrado</response>
+            <response code="400">ID inválido</response>
+            <response code="500">Error en el servidor</response>
+        </member>
+        <member name="M:MiApi.Controllers.AlumnosController.ObtenerAlumnoPorId(System.String)">
+            <summary>
+            Obtener un alumno por su ID
+            </summary>
+            <param name="id">ID del alumno</param>
+            <returns>Alumno encontrado</returns>
+            <response code="200">Éxito</response>
+            <response code="404">Alumno no encontrado</response>
+            <response code="400">ID inválido</response>
+            <response code="500">Error en el servidor</response>
+        </member>
+    </members>
+</doc>
